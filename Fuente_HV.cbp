@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Fuente_HV" />
+		<Option pch_mode="2" />
+		<Option compiler="arm-elf-gcc" />
+		<Option virtualFolders="CMSIS/;CMSIS/Inc/;STM32/;STM32/Inc/;STM32/Src/" />
+		<Build>
+			<Target title="Debug">
+				<Option output="Debug/Fuente_HV" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="" />
+				<Option object_output="Debug" />
+				<Option type="5" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="Release/Fuente_HV" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="" />
+				<Option object_output="Release" />
+				<Option type="5" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-Os" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Environment>
+				<Variable name="OPENOCD_CONFIG" value="stm32f030.cfg" />
+			</Environment>
+		</Build>
+		<Compiler>
+			<Add option="-mthumb" />
+			<Add option="-Wall" />
+			<Add option="-fno-common" />
+			<Add option="-mcpu=cortex-m0" />
+			<Add option="-fdata-sections" />
+			<Add option="-ffunction-sections" />
+			<Add option="-msoft-float" />
+			<Add option="-DUSE_HAL_DRIVER" />
+			<Add option="-DSTM32F030x6" />
+			<Add directory="Inc" />
+			<Add directory="Drivers/CMSIS/Include" />
+			<Add directory="Drivers/CMSIS/Device/ST/STM32F0xx/Include" />
+			<Add directory="Drivers/STM32F0xx_HAL_Driver/Inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,-Map,map.txt,--cref" />
+			<Add option="--specs=nosys.specs" />
+			<Add option="--specs=nano.specs" />
+			<Add option="-mcpu=cortex-m0" />
+			<Add option="-T STM32F030K6Tx_FLASH.ld" />
+			<Add option="-lc" />
+			<Add option="-lm" />
+			<Add option="-lnosys" />
+			<Add option="-Wl,--gc-sections" />
+			<Add option="-msoft-float" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="arm-none-eabi-objcopy -O ihex ${PROJECT_DIR}${TARGET_OUTPUT_FILE}  ${PROJECT_DIR}${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}.hex" />
+			<Add after="arm-none-eabi-objcopy -O binary ${PROJECT_DIR}${TARGET_OUTPUT_FILE}  ${PROJECT_DIR}${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}.bin" />
+			<Add after="arm-none-eabi-objdump -h -S ${PROJECT_DIR}${TARGET_OUTPUT_FILE} &gt; ${PROJECT_DIR}${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}.lst" />
+			<Add after="arm-none-eabi-size --format=berkeley ${PROJECT_DIR}${TARGET_OUTPUT_FILE}" />
+			<Mode after="always" />
+		</ExtraCommands>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030xc.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f031x6.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f038xx.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f042x6.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f048xx.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f051x8.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f058xx.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f070x6.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f070xb.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f071xb.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f078xx.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f091xc.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f098xx.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/arm_common_tables.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/arm_const_structs.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/arm_math.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/cmsis_armcc.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/cmsis_armcc_V6.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/cmsis_gcc.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_cm0.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_cm0plus.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_cm3.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_cm4.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_cm7.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_cmFunc.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_cmInstr.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_cmSimd.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_sc000.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/CMSIS/Include/core_sc300.h">
+			<Option virtualFolder="CMSIS/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32_assert_template.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_can.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cec.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_comp.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_conf_template.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_crc.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_crc_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dac.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dac_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2s.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_irda.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_irda_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_iwdg.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pcd.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pcd_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rtc.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rtc_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_smartcard.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_smartcard_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_smbus.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tsc.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_usart.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_usart_ex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_wwdg.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_adc.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_comp.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_cortex.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_crc.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_crs.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dac.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_i2c.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_iwdg.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rtc.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_spi.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_wwdg.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cec.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_comp.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_crc.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_crc_ex.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dac.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dac_ex.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2s.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_irda.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_iwdg.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_msp_template.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pcd.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pcd_ex.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc_ex.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_smartcard.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_smartcard_ex.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_smbus.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_timebase_rtc_alarm_template.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_timebase_rtc_wakeup_template.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_timebase_tim_template.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tsc.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_usart.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_wwdg.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_adc.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_comp.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_crc.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_crs.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_dac.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_dma.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_exti.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_gpio.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_i2c.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_pwr.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_rcc.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_rtc.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_spi.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_tim.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_usart.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_utils.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Inc/main.h" />
+		<Unit filename="Inc/stm32f0xx_hal_conf.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="Inc/stm32f0xx_it.h">
+			<Option virtualFolder="STM32/Inc/" />
+		</Unit>
+		<Unit filename="STM32F030K6Tx_FLASH.ld" />
+		<Unit filename="Src/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stm32f0xx_hal_msp.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Src/stm32f0xx_it.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="STM32/Src/" />
+		</Unit>
+		<Unit filename="Src/system_stm32f0xx.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="startup_stm32f030x6.s" />
+		<Unit filename="stm32f030.cfg" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

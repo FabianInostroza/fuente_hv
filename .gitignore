@@ -1,0 +1,5 @@
+*.o
+*.layout
+*.obj
+**/map.txt
+*.depend
